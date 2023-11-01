@@ -40,10 +40,6 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    public void author (){
-        author.getName();
-    }
-
     public Long getId() {
         return id;
     }
