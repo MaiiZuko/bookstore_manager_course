@@ -38,8 +38,11 @@ public class BookService {
 
     }
 
-    public BookDTO findById(Long id) {
-        java.util.Optional<Book> optionalBook = bookRepository.findById(id);
-        return bookMapper.toDto(optionalBook.get());
+    public BookDTO findById(Long id) throws BookNotFoundException{
+        Book book = bookRepository.findById(id)
+            .orElseThrow(() -> new BookNotFoundException(id));
+        //livro existe ou não dado o id que a gente passa
+
+        return bookMapper.toDto(book);
     }
 }

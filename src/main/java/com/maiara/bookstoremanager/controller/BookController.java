@@ -14,6 +14,7 @@ import com.maiara.bookstoremanager.dto.BookDTO;
 import com.maiara.bookstoremanager.dto.MessageResponseDTO;
 import com.maiara.bookstoremanager.entity.Book;
 import com.maiara.bookstoremanager.repository.BookRepository;
+import com.maiara.bookstoremanager.service.BookNotFoundException;
 import com.maiara.bookstoremanager.service.BookService;
 
 //Responsável somente para receber as requisições http
@@ -37,7 +38,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO findById(@PathVariable Long id) {
+    public BookDTO findById(@PathVariable Long id) throws BookNotFoundException {
         return bookService.findById(id);
     }
     
